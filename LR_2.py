@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt # type: ignore
 import seaborn as sns # type: ignore
 matplotlib.use('Agg')
 
-
+#TODO Создание и обработка массивов
 def create_vector():
     return np.arange(10)
 
@@ -21,7 +21,7 @@ def transpose_matrix(mat):
 
 
 
-
+#TODO Векторные операции
 def vector_add(a, b):
     return a+b
 
@@ -36,7 +36,7 @@ def dot_product(a, b):
 
 
 
-
+#TODO Матричные операции
 def matrix_multiply(a, b):
     return np.matmul(a, b)
 
@@ -51,7 +51,7 @@ def solve_linear_system(a,b):
 
 
 
-
+#TODO Статистический анализ
 def load_dataset(path="data/students_score.csv"):
     return pd.read_csv(path).to_numpy()
 
@@ -73,7 +73,7 @@ def normalize_data(data):
 
 
 
-
+#TODO Визуализация
 def plot_histogram(data):
     plt.figure()
     plt.hist(data, bins=10, edgecolor='black')
