@@ -1,0 +1,34 @@
+site_name: My Portfolio
+site_description: Student portfolio for lab works
+site_author: Ratnikov Ivam
+
+#TODO Theme configuration (Material theme requires installation: pip install mkdocs-material)
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+#TODO Navigation structure
+nav:
+  - Home: index.md
+  - About: about.md
+  - Lab Works:
+    - Lab 1: labs/lab1.md
+    - Lab 2: labs/lab2.md
+    - Lab 3: labs/lab3.md
