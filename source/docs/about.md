@@ -1,6 +1,6 @@
 # About Me
 
 Student name: Ratnikov Ivan
-Group: IT-101
+Group: P3124
 
 This is my portfolio.
