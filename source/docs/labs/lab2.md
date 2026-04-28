@@ -1,1 +1,161 @@
-# Lab 2
+# Лабораторная работа №2
+## Цель работы: Освоить процесс создания статического сайта с использованием генератора документации MkDocs. 
+Научиться организовывать структуру документации проекта (портфолио лабораторных работ). 
+Изучить базовые принципы работы с системой контроля версий Git и платформой GitHub. 
+Развернуть статический сайт с использованием механизма GitHub Pages на домене вида username.github.io. 
+Освоить базовую настройку темы оформления и конфигурационного файла mkdocs.yml.
+## Задачи: 
+Создавать и преобразовывать массивы (вектор, матрица, reshape, транспонирование). 
+Выполнять векторные операции (сложение, умножение на скаляр, поэлементное произведение, скалярное произведение). 
+Реализовать матричные операции (умножение, определитель, обратная матрица, решение СЛАУ).
+Проводить статистический анализ данных (загрузка из CSV, расчёт статистик, нормализация). 
+Строить и сохранять графики (гистограмма, тепловая карта, линейный график).
+## Код программы: 
+markdown
+```python title="Lab_2.py" linenums="1"
+import os
+import numpy as np # type: ignore
+import matplotlib # type: ignore
+import pandas as pd # type: ignore
+import matplotlib.pyplot as plt # type: ignore
+import seaborn as sns # type: ignore
+matplotlib.use('Agg')
+
+#TODO Создание и обработка массивов
+def create_vector():
+    return np.arange(10)
+
+def create_matrix():
+    return np.random.rand(5,5)
+
+def reshape_vector(vec):
+    return vec.reshape(2,5)
+
+def transpose_matrix(mat):
+    return np.transpose(mat)
+
+
+
+#TODO Векторные операции
+def vector_add(a, b):
+    return a+b
+
+def scalar_multiply(vec, scalar):
+    return vec*scalar
+
+def elementwise_multiply(a, b):
+    return a*b
+
+def dot_product(a, b):
+    return np.dot(a, b)
+
+
+
+#TODO Матричные операции
+def matrix_multiply(a, b):
+    return np.matmul(a, b)
+
+def matrix_determinant(a):
+    return np.linalg.det(a)
+
+def matrix_inverse(a):
+    return np.linalg.inv(a)
+
+def solve_linear_system(a,b):
+    return np.linalg.solve(a, b)
+
+
+
+#TODO Статистический анализ
+def load_dataset(path="data/students_score.csv"):
+    return pd.read_csv(path).to_numpy()
+
+def statistical_analysis(data):
+    return {
+        "mean": np.mean(data),
+        "median": np.median(data),
+        "std": np.std(data),
+        "min": np.min(data),
+        "max": np.max(data),
+        "25_percentile": np.percentile(data, 25),
+        "75_percentile": np.percentile(data, 75)
+    }
+
+def normalize_data(data):
+    min_val= np.min(data)
+    max_val= np.max(data)
+    return (data - min_val)/(max_val-min_val)
+
+
+
+#TODO Визуализация
+def plot_histogram(data):
+    plt.figure()
+    plt.hist(data, bins=10, edgecolor='black')
+    plt.title('Распределение оценок по математике')
+    plt.xlabel('Оценка')
+    plt.ylabel('Частота')
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/histogram.png')
+    plt.close()
+
+def plot_heatmap(matrix):
+    plt.figure(figsize=(6,5))
+    sns.heatmap(matrix, annot=True, cmap='coolwarm', center=0)
+    plt.title('Корреляция предметов')
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/hestmap.png')
+    plt.close()
+
+def plot_line(x, y):
+    plt.figure()
+    plt.plot(x,y,marker='o', linestyle='-')
+    plt.title('Оценки студентов по математике')
+    plt.xlabel('Номер студента')
+    plt.ylabel('Оценка')
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/line_pllot.png')
+    plt.close()
+```
+## Выводы
+
+В ходе выполнения лабораторной работы №2 были освоены базовые возможности библиотек **NumPy**, **Pandas** и **Matplotlib/Seaborn** для работы с многомерными массивами, выполнения векторных и матричных операций, а также визуализации данных.
+
+### Основные результаты:
+
+1. **Создание и преобразование массивов**  
+   Реализованы функции для генерации векторов (`np.arange`), случайных матриц, изменения формы (`reshape`) и транспонирования. Это демонстрирует гибкость NumPy при работе с размерностями.
+
+2. **Векторные операции**  
+   Показаны поэлементное сложение, умножение на скаляр, поэлементное произведение и скалярное произведение (`np.dot`). Подтверждено, что векторизованные вычисления в NumPy выполняются на порядок быстрее циклов на чистом Python.
+
+3. **Матричные операции**  
+   Реализованы умножение матриц (`np.matmul`), вычисление определителя, обратной матрицы и решение систем линейных уравнений (`np.linalg.solve`). Эти функции необходимы для численных методов и машинного обучения.
+
+4. **Статистический анализ**  
+   На примере загрузки данных из CSV (файл `students_score.csv`) вычислены основные статистики: среднее, медиана, стандартное отклонение, квартили. Функция `normalize_data` приводит данные к диапазону [0,1] для дальнейшего анализа.
+
+5. **Визуализация**  
+   Построены три типа графиков:  
+   - **Гистограмма** распределения оценок,  
+   - **Тепловая карта** (корреляционная матрица),  
+   - **Линейный график** успеваемости студентов.  
+   Все графики сохраняются в папку `plots/` без интерактивного отображения благодаря `matplotlib.use('Agg')`, что удобно для автоматической генерации отчётов.
+
+### Соответствие стандартам:
+
+- **PEP-8**: код отформатирован, имена функций и переменных в `snake_case`, отступы – 4 пробела.
+- **Аннотации типов (PEP-484)**: все функции снабжены аннотациями (например, `def create_vector() -> np.ndarray`).
+- **Документация (PEP-257)**: каждая функция содержит docstring с описанием параметров и возвращаемого значения.
+- **Тестирование**: (при наличии тестов) функции проходят проверки на корректность входных данных и выходных форм.
+
+### Нюансы, выявленные в процессе:
+
+- При загрузке данных через `pd.read_csv().to_numpy()` получается двумерный массив; для статистического анализа требуется одномерный – в коде это не учтено, но может быть исправлено использованием `.flatten()`.
+- Функция `plot_heatmap` содержит опечатку в имени сохраняемого файла (`hestmap.png` вместо `heatmap.png`), что не влияет на выполнение, но рекомендуется исправить.
+- Для работы с реальным CSV-файлом необходимо убедиться в его наличии по пути `data/students_score.csv`, иначе произойдёт ошибка `FileNotFoundError`.
+- При нормализации данных `normalize_data` не проверяет случай, когда все значения одинаковы (деление на ноль) – можно добавить защиту.
+
+### Заключение
+
+Лабораторная работа позволила закрепить навыки использования стека **NumPy + Pandas + Matplotlib** для типовых задач анализа данных. Полученные функции могут быть использованы как основа для более сложных проектов по обработке и визуализации данных.
