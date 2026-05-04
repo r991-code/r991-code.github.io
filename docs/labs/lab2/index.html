@@ -669,31 +669,46 @@
 Проводить статистический анализ данных (загрузка из CSV, расчёт статистик, нормализация). 
 Строить и сохранять графики (гистограмма, тепловая карта, линейный график).</p>
 <h2 id="_2">Код программы:</h2>
-<p>markdown
-```python title="Lab_2.py" linenums="1"
+<h1 id="no2_1">Лабораторная работа №2</h1>
+<h2 id="_3">Цель работы</h2>
+<p>Освоить процесс создания статического сайта с использованием генератора документации MkDocs.<br />
+Научиться организовывать структуру документации проекта (портфолио лабораторных работ).<br />
+Изучить базовые принципы работы с системой контроля версий Git и платформой GitHub.<br />
+Развернуть статический сайт с использованием механизма GitHub Pages на домене вида username.github.io.<br />
+Освоить базовую настройку темы оформления и конфигурационного файла mkdocs.yml.</p>
+<h2 id="_4">Задачи</h2>
+<ul>
+<li>Создавать и преобразовывать массивы (вектор, матрица, reshape, транспонирование).  </li>
+<li>Выполнять векторные операции (сложение, умножение на скаляр, поэлементное произведение, скалярное произведение).  </li>
+<li>Реализовать матричные операции (умножение, определитель, обратная матрица, решение СЛАУ).  </li>
+<li>Проводить статистический анализ данных (загрузка из CSV, расчёт статистик, нормализация).  </li>
+<li>Строить и сохранять графики (гистограмма, тепловая карта, линейный график).</li>
+</ul>
+<h2 id="_5">Код программы</h2>
+<p>```python title="Lab_2.py" linenums="1"
 import os
-import numpy as np # type: ignore
-import matplotlib # type: ignore
-import pandas as pd # type: ignore
-import matplotlib.pyplot as plt # type: ignore
-import seaborn as sns # type: ignore
+import numpy as np  # type: ignore
+import matplotlib    # type: ignore
+import pandas as pd  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
+import seaborn as sns  # type: ignore
 matplotlib.use('Agg')</p>
 <h1 id="todo">TODO Создание и обработка массивов</h1>
 <p>def create_vector():
     return np.arange(10)</p>
 <p>def create_matrix():
-    return np.random.rand(5,5)</p>
+    return np.random.rand(5, 5)</p>
 <p>def reshape_vector(vec):
-    return vec.reshape(2,5)</p>
+    return vec.reshape(2, 5)</p>
 <p>def transpose_matrix(mat):
     return np.transpose(mat)</p>
 <h1 id="todo_1">TODO Векторные операции</h1>
 <p>def vector_add(a, b):
-    return a+b</p>
+    return a + b</p>
 <p>def scalar_multiply(vec, scalar):
-    return vec*scalar</p>
+    return vec * scalar</p>
 <p>def elementwise_multiply(a, b):
-    return a*b</p>
+    return a * b</p>
 <p>def dot_product(a, b):
     return np.dot(a, b)</p>
 <h1 id="todo_2">TODO Матричные операции</h1>
@@ -703,7 +718,7 @@ matplotlib.use('Agg')</p>
     return np.linalg.det(a)</p>
 <p>def matrix_inverse(a):
     return np.linalg.inv(a)</p>
-<p>def solve_linear_system(a,b):
+<p>def solve_linear_system(a, b):
     return np.linalg.solve(a, b)</p>
 <h1 id="todo_3">TODO Статистический анализ</h1>
 <p>def load_dataset(path="data/students_score.csv"):
@@ -719,9 +734,9 @@ matplotlib.use('Agg')</p>
         "75_percentile": np.percentile(data, 75)
     }</p>
 <p>def normalize_data(data):
-    min_val= np.min(data)
-    max_val= np.max(data)
-    return (data - min_val)/(max_val-min_val)</p>
+    min_val = np.min(data)
+    max_val = np.max(data)
+    return (data - min_val) / (max_val - min_val)</p>
 <h1 id="todo_4">TODO Визуализация</h1>
 <p>def plot_histogram(data):
     plt.figure()
@@ -733,25 +748,24 @@ matplotlib.use('Agg')</p>
     plt.savefig('plots/histogram.png')
     plt.close()</p>
 <p>def plot_heatmap(matrix):
-    plt.figure(figsize=(6,5))
+    plt.figure(figsize=(6, 5))
     sns.heatmap(matrix, annot=True, cmap='coolwarm', center=0)
     plt.title('Корреляция предметов')
     os.makedirs('plots', exist_ok=True)
-    plt.savefig('plots/hestmap.png')
+    plt.savefig('plots/heatmap.png')   # исправлено имя файла
     plt.close()</p>
 <p>def plot_line(x, y):
     plt.figure()
-    plt.plot(x,y,marker='o', linestyle='-')
+    plt.plot(x, y, marker='o', linestyle='-')
     plt.title('Оценки студентов по математике')
     plt.xlabel('Номер студента')
     plt.ylabel('Оценка')
     os.makedirs('plots', exist_ok=True)
-    plt.savefig('plots/line_pllot.png')
-    plt.close()
-```</p>
-<h2 id="_3">Выводы</h2>
+    plt.savefig('plots/line_plot.png')
+    plt.close()</p>
+<h2 id="_6">Выводы</h2>
 <p>В ходе выполнения лабораторной работы №2 были освоены базовые возможности библиотек <strong>NumPy</strong>, <strong>Pandas</strong> и <strong>Matplotlib/Seaborn</strong> для работы с многомерными массивами, выполнения векторных и матричных операций, а также визуализации данных.</p>
-<h3 id="_4">Основные результаты:</h3>
+<h3 id="_7">Основные результаты:</h3>
 <ol>
 <li>
 <p><strong>Создание и преобразование массивов</strong><br />
@@ -778,21 +792,21 @@ matplotlib.use('Agg')</p>
 <li><strong>Линейный график</strong> успеваемости студентов.<br />
    Все графики сохраняются в папку <code>plots/</code> без интерактивного отображения благодаря <code>matplotlib.use('Agg')</code>, что удобно для автоматической генерации отчётов.</li>
 </ol>
-<h3 id="_5">Соответствие стандартам:</h3>
+<h3 id="_8">Соответствие стандартам:</h3>
 <ul>
 <li><strong>PEP-8</strong>: код отформатирован, имена функций и переменных в <code>snake_case</code>, отступы – 4 пробела.</li>
 <li><strong>Аннотации типов (PEP-484)</strong>: все функции снабжены аннотациями (например, <code>def create_vector() -&gt; np.ndarray</code>).</li>
 <li><strong>Документация (PEP-257)</strong>: каждая функция содержит docstring с описанием параметров и возвращаемого значения.</li>
 <li><strong>Тестирование</strong>: (при наличии тестов) функции проходят проверки на корректность входных данных и выходных форм.</li>
 </ul>
-<h3 id="_6">Нюансы, выявленные в процессе:</h3>
+<h3 id="_9">Нюансы, выявленные в процессе:</h3>
 <ul>
 <li>При загрузке данных через <code>pd.read_csv().to_numpy()</code> получается двумерный массив; для статистического анализа требуется одномерный – в коде это не учтено, но может быть исправлено использованием <code>.flatten()</code>.</li>
 <li>Функция <code>plot_heatmap</code> содержит опечатку в имени сохраняемого файла (<code>hestmap.png</code> вместо <code>heatmap.png</code>), что не влияет на выполнение, но рекомендуется исправить.</li>
 <li>Для работы с реальным CSV-файлом необходимо убедиться в его наличии по пути <code>data/students_score.csv</code>, иначе произойдёт ошибка <code>FileNotFoundError</code>.</li>
 <li>При нормализации данных <code>normalize_data</code> не проверяет случай, когда все значения одинаковы (деление на ноль) – можно добавить защиту.</li>
 </ul>
-<h3 id="_7">Заключение</h3>
+<h3 id="_10">Заключение</h3>
 <p>Лабораторная работа позволила закрепить навыки использования стека <strong>NumPy + Pandas + Matplotlib</strong> для типовых задач анализа данных. Полученные функции могут быть использованы как основа для более сложных проектов по обработке и визуализации данных.</p>
 
 
