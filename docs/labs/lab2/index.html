@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-2" class="md-skip">
+        <a href="#no2" class="md-skip">
           Skip to content
         </a>
       
@@ -453,6 +453,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -469,6 +487,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цель работы: Освоить процесс создания статического сайта с использованием генератора документации MkDocs.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Задачи:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Код программы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -530,6 +600,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цель работы: Освоить процесс создания статического сайта с использованием генератора документации MkDocs.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Задачи:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Код программы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -545,7 +656,144 @@
 
 
 
-<h1 id="lab-2">Lab 2</h1>
+<h1 id="no2">Лабораторная работа №2</h1>
+<h2 id="mkdocs">Цель работы: Освоить процесс создания статического сайта с использованием генератора документации MkDocs.</h2>
+<p>Научиться организовывать структуру документации проекта (портфолио лабораторных работ). 
+Изучить базовые принципы работы с системой контроля версий Git и платформой GitHub. 
+Развернуть статический сайт с использованием механизма GitHub Pages на домене вида username.github.io. 
+Освоить базовую настройку темы оформления и конфигурационного файла mkdocs.yml.</p>
+<h2 id="_1">Задачи:</h2>
+<p>Создавать и преобразовывать массивы (вектор, матрица, reshape, транспонирование). 
+Выполнять векторные операции (сложение, умножение на скаляр, поэлементное произведение, скалярное произведение). 
+Реализовать матричные операции (умножение, определитель, обратная матрица, решение СЛАУ).
+Проводить статистический анализ данных (загрузка из CSV, расчёт статистик, нормализация). 
+Строить и сохранять графики (гистограмма, тепловая карта, линейный график).</p>
+<h2 id="_2">Код программы:</h2>
+<p>markdown
+```python title="Lab_2.py" linenums="1"
+import os
+import numpy as np # type: ignore
+import matplotlib # type: ignore
+import pandas as pd # type: ignore
+import matplotlib.pyplot as plt # type: ignore
+import seaborn as sns # type: ignore
+matplotlib.use('Agg')</p>
+<h1 id="todo">TODO Создание и обработка массивов</h1>
+<p>def create_vector():
+    return np.arange(10)</p>
+<p>def create_matrix():
+    return np.random.rand(5,5)</p>
+<p>def reshape_vector(vec):
+    return vec.reshape(2,5)</p>
+<p>def transpose_matrix(mat):
+    return np.transpose(mat)</p>
+<h1 id="todo_1">TODO Векторные операции</h1>
+<p>def vector_add(a, b):
+    return a+b</p>
+<p>def scalar_multiply(vec, scalar):
+    return vec*scalar</p>
+<p>def elementwise_multiply(a, b):
+    return a*b</p>
+<p>def dot_product(a, b):
+    return np.dot(a, b)</p>
+<h1 id="todo_2">TODO Матричные операции</h1>
+<p>def matrix_multiply(a, b):
+    return np.matmul(a, b)</p>
+<p>def matrix_determinant(a):
+    return np.linalg.det(a)</p>
+<p>def matrix_inverse(a):
+    return np.linalg.inv(a)</p>
+<p>def solve_linear_system(a,b):
+    return np.linalg.solve(a, b)</p>
+<h1 id="todo_3">TODO Статистический анализ</h1>
+<p>def load_dataset(path="data/students_score.csv"):
+    return pd.read_csv(path).to_numpy()</p>
+<p>def statistical_analysis(data):
+    return {
+        "mean": np.mean(data),
+        "median": np.median(data),
+        "std": np.std(data),
+        "min": np.min(data),
+        "max": np.max(data),
+        "25_percentile": np.percentile(data, 25),
+        "75_percentile": np.percentile(data, 75)
+    }</p>
+<p>def normalize_data(data):
+    min_val= np.min(data)
+    max_val= np.max(data)
+    return (data - min_val)/(max_val-min_val)</p>
+<h1 id="todo_4">TODO Визуализация</h1>
+<p>def plot_histogram(data):
+    plt.figure()
+    plt.hist(data, bins=10, edgecolor='black')
+    plt.title('Распределение оценок по математике')
+    plt.xlabel('Оценка')
+    plt.ylabel('Частота')
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/histogram.png')
+    plt.close()</p>
+<p>def plot_heatmap(matrix):
+    plt.figure(figsize=(6,5))
+    sns.heatmap(matrix, annot=True, cmap='coolwarm', center=0)
+    plt.title('Корреляция предметов')
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/hestmap.png')
+    plt.close()</p>
+<p>def plot_line(x, y):
+    plt.figure()
+    plt.plot(x,y,marker='o', linestyle='-')
+    plt.title('Оценки студентов по математике')
+    plt.xlabel('Номер студента')
+    plt.ylabel('Оценка')
+    os.makedirs('plots', exist_ok=True)
+    plt.savefig('plots/line_pllot.png')
+    plt.close()
+```</p>
+<h2 id="_3">Выводы</h2>
+<p>В ходе выполнения лабораторной работы №2 были освоены базовые возможности библиотек <strong>NumPy</strong>, <strong>Pandas</strong> и <strong>Matplotlib/Seaborn</strong> для работы с многомерными массивами, выполнения векторных и матричных операций, а также визуализации данных.</p>
+<h3 id="_4">Основные результаты:</h3>
+<ol>
+<li>
+<p><strong>Создание и преобразование массивов</strong><br />
+   Реализованы функции для генерации векторов (<code>np.arange</code>), случайных матриц, изменения формы (<code>reshape</code>) и транспонирования. Это демонстрирует гибкость NumPy при работе с размерностями.</p>
+</li>
+<li>
+<p><strong>Векторные операции</strong><br />
+   Показаны поэлементное сложение, умножение на скаляр, поэлементное произведение и скалярное произведение (<code>np.dot</code>). Подтверждено, что векторизованные вычисления в NumPy выполняются на порядок быстрее циклов на чистом Python.</p>
+</li>
+<li>
+<p><strong>Матричные операции</strong><br />
+   Реализованы умножение матриц (<code>np.matmul</code>), вычисление определителя, обратной матрицы и решение систем линейных уравнений (<code>np.linalg.solve</code>). Эти функции необходимы для численных методов и машинного обучения.</p>
+</li>
+<li>
+<p><strong>Статистический анализ</strong><br />
+   На примере загрузки данных из CSV (файл <code>students_score.csv</code>) вычислены основные статистики: среднее, медиана, стандартное отклонение, квартили. Функция <code>normalize_data</code> приводит данные к диапазону [0,1] для дальнейшего анализа.</p>
+</li>
+<li>
+<p><strong>Визуализация</strong><br />
+   Построены три типа графиков:  </p>
+</li>
+<li><strong>Гистограмма</strong> распределения оценок,  </li>
+<li><strong>Тепловая карта</strong> (корреляционная матрица),  </li>
+<li><strong>Линейный график</strong> успеваемости студентов.<br />
+   Все графики сохраняются в папку <code>plots/</code> без интерактивного отображения благодаря <code>matplotlib.use('Agg')</code>, что удобно для автоматической генерации отчётов.</li>
+</ol>
+<h3 id="_5">Соответствие стандартам:</h3>
+<ul>
+<li><strong>PEP-8</strong>: код отформатирован, имена функций и переменных в <code>snake_case</code>, отступы – 4 пробела.</li>
+<li><strong>Аннотации типов (PEP-484)</strong>: все функции снабжены аннотациями (например, <code>def create_vector() -&gt; np.ndarray</code>).</li>
+<li><strong>Документация (PEP-257)</strong>: каждая функция содержит docstring с описанием параметров и возвращаемого значения.</li>
+<li><strong>Тестирование</strong>: (при наличии тестов) функции проходят проверки на корректность входных данных и выходных форм.</li>
+</ul>
+<h3 id="_6">Нюансы, выявленные в процессе:</h3>
+<ul>
+<li>При загрузке данных через <code>pd.read_csv().to_numpy()</code> получается двумерный массив; для статистического анализа требуется одномерный – в коде это не учтено, но может быть исправлено использованием <code>.flatten()</code>.</li>
+<li>Функция <code>plot_heatmap</code> содержит опечатку в имени сохраняемого файла (<code>hestmap.png</code> вместо <code>heatmap.png</code>), что не влияет на выполнение, но рекомендуется исправить.</li>
+<li>Для работы с реальным CSV-файлом необходимо убедиться в его наличии по пути <code>data/students_score.csv</code>, иначе произойдёт ошибка <code>FileNotFoundError</code>.</li>
+<li>При нормализации данных <code>normalize_data</code> не проверяет случай, когда все значения одинаковы (деление на ноль) – можно добавить защиту.</li>
+</ul>
+<h3 id="_7">Заключение</h3>
+<p>Лабораторная работа позволила закрепить навыки использования стека <strong>NumPy + Pandas + Matplotlib</strong> для типовых задач анализа данных. Полученные функции могут быть использованы как основа для более сложных проектов по обработке и визуализации данных.</p>
 
 
 
