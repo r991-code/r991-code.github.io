@@ -1,6 +1,7 @@
 site_name: My Portfolio
 site_description: Student portfolio for lab works
 site_author: Ratnikov Ivam
+site_url: https://r991-code.github.io
 
 #TODO Theme configuration (Material theme requires installation: pip install mkdocs-material)
 theme:
