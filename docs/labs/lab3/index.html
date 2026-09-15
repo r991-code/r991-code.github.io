@@ -546,10 +546,116 @@
 
 
 <h1 id="lab-3">Lab 3</h1>
-<!-- Lab_3 -->
-<!-- Цель работы: -->
-<!-- Задание: -->
-<!-- Код: -->
+<h1 id="cicd-sourcecraft">Отчёт по лабораторной работе: CI/CD для статического сайта в SourceCraft</h1>
+<h2 id="1">1. Цель работы</h2>
+<p>Реализовать автоматическое развёртывание статического сайта на mkdocs двумя способами: через платформу SourceCraft (SourceCraft Sites) и через GitHub Actions на GitHub Pages, используя один локальный репозиторий с двумя удалёнными репозиториями.</p>
+<h2 id="2">2. Что было выполнено</h2>
+<ol>
+<li>Создана публичная организация в SourceCraft (<code>Labs</code>, идентификатор <code>ivanratnikov-labs</code>).</li>
+<li>Создан пустой репозиторий <code>labs</code> внутри организации.</li>
+<li>Создан персональный токен доступа (PAT) с ролью «Ответственный за репозиторий» (Maintainer) для работы по HTTPS.</li>
+<li>
+<p>К локальному git-репозиторию добавлен второй remote:</p>
+<div class="language-text highlight"><pre><span></span><code>git remote add sourcecraft https://&lt;username&gt;:&lt;token&gt;@git.sourcecraft.dev/ivanratnikov-labs/labs.git
+</code></pre></div>
+</li>
+<li>
+<p>Настроен файл <code>.sourcecraft/sites.yaml</code>, указывающий SourceCraft Sites, откуда брать собранный сайт.</p>
+</li>
+<li>
+<p>Сайт mkdocs пересобран из исходников (<code>source/mkdocs.yml</code>) в папку <code>docs/</code> командой:</p>
+<div class="language-text highlight"><pre><span></span><code>mkdocs build --site-dir ../docs
+</code></pre></div>
+</li>
+<li>
+<p>Изменения запушены в оба remote:</p>
+<div class="language-text highlight"><pre><span></span><code>git push origin main
+git push sourcecraft main
+</code></pre></div>
+</li>
+<li>
+<p>Создан workflow GitHub Actions (<code>.github/workflows/deploy.yml</code>) для автоматической сборки и деплоя на GitHub Pages при каждом пуше в <code>main</code>.</p>
+</li>
+<li>В настройках GitHub-репозитория включён GitHub Pages с источником <code>gh-pages</code>.</li>
+</ol>
+<h2 id="3">3. Итоговая структура репозитория</h2>
+<div class="language-text highlight"><pre><span></span><code>r991-code.github.io/
+├── source/
+│   ├── mkdocs.yml        (конфигурация mkdocs, исходники)
+│   └── docs/             (markdown-страницы)
+├── docs/                 (собранный сайт, используется SourceCraft Sites)
+│   ├── index.html
+│   ├── assets/
+│   └── ...
+├── .sourcecraft/
+│   └── sites.yaml        (конфигурация SourceCraft Sites)
+└── .github/
+    └── workflows/
+        └── deploy.yml    (workflow GitHub Actions)
+</code></pre></div>
+<h2 id="4-sourcecraft-sites">4. Конфигурация SourceCraft Sites</h2>
+<p>Файл <code>.sourcecraft/sites.yaml</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>site:
+  root: &quot;docs&quot;
+  ref: &quot;main&quot;
+</code></pre></div>
+<p>SourceCraft автоматически переопубликовывает сайт из указанной папки основной ветки в течение нескольких минут после каждого пуша — отдельного CI-пайплайна для этого не требуется.</p>
+<h2 id="5-github-actions">5. Конфигурация GitHub Actions</h2>
+<p>Файл <code>.github/workflows/deploy.yml</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>name: Deploy mkdocs site
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: &#39;3.x&#39;
+
+      - run: pip install mkdocs mkdocs-material
+
+      - name: Build and deploy
+        run: |
+          cd source
+          mkdocs gh-deploy --force --remote-branch gh-pages
+</code></pre></div>
+<p>Workflow запускается автоматически при каждом пуше в <code>main</code>, собирает документацию из <code>source/</code> и публикует в ветку <code>gh-pages</code>.</p>
+<h2 id="6">6. Что неоходимо сделать, чтобы выполнить деплой</h2>
+<ol>
+<li>Установить mkdocs: <code>pip install mkdocs mkdocs-material</code>.</li>
+<li>Создать проект: <code>mkdocs new .</code> (или использовать существующие исходники в <code>source/</code>).</li>
+<li>Создать пустые репозитории на GitHub и в организации SourceCraft.</li>
+<li>Добавить оба remote'а (<code>origin</code>, <code>sourcecraft</code>).</li>
+<li>Создать <code>.sourcecraft/sites.yaml</code> и <code>.github/workflows/deploy.yml</code>, как указано выше.</li>
+<li>Запушить в оба remote'а — деплой запустится автоматически.</li>
+</ol>
+<h2 id="7">7. Настройки, необходимые в интерфейсах платформ</h2>
+<p><strong>SourceCraft:</strong></p>
+<ul>
+<li>Организация должна быть публичной (обязательное условие для SourceCraft Sites).</li>
+<li>Токен доступа — с ролью Maintainer / Ответственный за репозиторий, иначе push отклоняется.</li>
+</ul>
+<p><strong>GitHub:</strong></p>
+<ul>
+<li>Settings → Pages → Source: Deploy from a branch → gh-pages / root.</li>
+<li>Для workflow нужны права <code>contents: write</code> (указаны в самом <code>deploy.yml</code>), иначе <code>mkdocs gh-deploy</code> не сможет запушить в <code>gh-pages</code>.</li>
+</ul>
+<h2 id="8">8. Итоговые ссылки</h2>
+<ul>
+<li>Сайт на SourceCraft: https://ivanratnikov-labs.sourcecraft.site/labs/</li>
+<li>Репозиторий SourceCraft: https://git.sourcecraft.dev/ivanratnikov-labs/labs</li>
+<li>Сайт на GitHub Pages: https://r991-code.github.io/</li>
+<li>Репозиторий GitHub: https://github.com/r991-code/r991-code.github.io</li>
+</ul>
 
 
 
