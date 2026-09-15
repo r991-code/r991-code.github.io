@@ -109,6 +109,6 @@ Workflow запускается автоматически при каждом �
 ## 8. Итоговые ссылки
 
 - Сайт на SourceCraft: https://ivanratnikov-labs.sourcecraft.site/labs/
-- Репозиторий SourceCraft: https://git.sourcecraft.dev/ivanratnikov-labs/labs
+- Репозиторий SourceCraft: https://sourcecraft.dev/ivanratnikov-labs/labs
 - Сайт на GitHub Pages: https://r991-code.github.io/
 - Репозиторий GitHub: https://github.com/r991-code/r991-code.github.io
