@@ -12,6 +12,8 @@
         <meta name="author" content="Ratnikov Ivam">
       
       
+        <link rel="canonical" href="https://r991-code.github.io/labs/lab1/">
+      
       
         <link rel="prev" href="../../about/">
       
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-1" class="md-skip">
+        <a href="#no1" class="md-skip">
           Skip to content
         </a>
       
@@ -425,6 +427,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -441,6 +461,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цель работы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Задачи:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выводы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -530,6 +602,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цель работы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Задачи:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Выводы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -545,11 +658,30 @@
 
 
 
-<h1 id="lab-1">Lab 1</h1>
-<!-- Lab_1 -->
-<!-- Цель работы: -->
-<!-- Задание: -->
-<!-- Код: -->
+<h1 id="no1">Лабораторная работа №1</h1>
+<h2 id="_1">Цель работы:</h2>
+<p>Освоить процесс создания статического сайта с использованием генератора документации MkDocs.
+Научиться организовывать структуру документации проекта (портфолио лабораторных работ).
+Изучить базовые принципы работы с системой контроля версий Git и платформой GitHub.
+Развернуть статический сайт с использованием механизма GitHub Pages на домене вида username.github.io.
+Освоить базовую настройку темы оформления и конфигурационного файла mkdocs.yml.</p>
+<h2 id="_2">Задачи:</h2>
+<p>Создать публичный репозиторий на GitHub для размещения сайта-портфолио.</p>
+<p>Настроить GitHub Pages так, чтобы публикация осуществлялась из каталога /docs ветки main.</p>
+<p>Клонировать репозиторий на локальный компьютер.</p>
+<p>Создать и активировать виртуальное окружение Python.</p>
+<p>Установить MkDocs в виртуальное окружение.</p>
+<p>Настроить файл .gitignore (исключить виртуальное окружение, служебные файлы и др.).</p>
+<p>Создать новый сайт командой:</p>
+<p>mkdocs new source
+Перейти в каталог source и запустить локальный сервер:</p>
+<p>cd source
+mkdocs serve
+Выполнить сборку сайта в каталог /docs корня репозитория:</p>
+<p>mkdocs build -d ../docs
+Выполнить коммит и отправку в удалённый репозиторий (включая каталог source и каталог docs).</p>
+<h2 id="_3">Выводы:</h2>
+<p>В ходе выполнения лабораторной работы №1 был успешно создан и развёрнут статический сайт-портфолио на базе MkDocs, доступный по адресу https://r991-code.github.io. Освоены ключевые этапы: инициализация проекта, выбор и подключение темы оформления, настройка конфигурационного файла mkdocs.yml (название сайта, структура навигации через nav), организация страниц (главная, «Об авторе», раздел лабораторных работ с отдельными страницами для каждой работы). Изучены базовые принципы работы с Git и GitHub: создание репозитория, клонирование, фиксация осмысленных коммитов, настройка GitHub Pages для публикации из каталога /docs ветки main. В результате приобретены практические навыки генерации статической документации, локального тестирования (mkdocs serve), финальной сборки (mkdocs build) и публикации проекта в интернете без использования серверной логики, что создаёт основу для дальнейшего портфолио.</p>
 
 
 
